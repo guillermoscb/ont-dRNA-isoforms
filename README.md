@@ -1,4 +1,4 @@
-# ont-dRNA-isoform
+# ont-dRNA-isoforms
 
 ## Overview 
 

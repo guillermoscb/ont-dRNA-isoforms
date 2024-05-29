@@ -1,0 +1,70 @@
+from snakemake.utils import min_version
+min_version("6.0")
+import os
+
+
+configfile: "config/config.yaml"
+
+
+include: "./scripts/common.py"
+
+
+localrules:
+    all,
+
+rule all:
+    input:
+        input_main,
+
+
+
+# BASECALLING BY DORADO 
+
+include: "rules/01_basecall_dorado.smk"
+
+
+
+# SUMMARY STATS BY DORADO
+
+include: "rules/02_summary_dorado.smk"
+
+
+
+# RAW DATA QUALITY CONTROL
+
+include: "rules/03_pycoqc.smk"
+
+
+
+# QUALITY SCORE FILTER 
+
+include: "rules/04_qs_filter.smk"
+
+
+
+# ALIGNMENT BY MINIMAP2 
+
+include: "rules/05_minimap2.smk"
+
+
+
+# PRIMARY ALIGNMENT SORTED BY SAMTOOLS
+
+include: "rules/06_primary_alignment.smk"
+
+
+
+# SEQUENCING COVERAGE BY SAMTOOLS
+
+include: "rules/07_seq_coverage.smk"
+
+
+# SEQUENCING DEPTH BY SAMTOOLS
+
+include: "rules/08_seq_depth.smk"
+
+
+
+# ISOFORM CALLING BY BAMBU
+
+include: "rules/09_isoform_bambu.smk"

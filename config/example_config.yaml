@@ -1,0 +1,35 @@
+paths:
+# Reference 1 in fasta format (ext .fa) and reference 2 in gtf format
+  references:
+    ref1: "/PATH/TO/reference.fa"
+    ref2: "/PATH/TO/annotation.gtf"
+
+
+filters:
+    - ge-06
+
+samples:
+    sample1:
+        pod5: "/PATH/TO/file.pod5"
+
+
+basecallers:
+  dorado:
+    bin: "/PATH/TO/bin/dorado"
+
+
+resources:
+    default:
+        partition: main
+        threads: 1
+        mem_mb: 32000
+        runtime: 180
+        slurm_extra: ""
+        params_extra: ""
+    basecall_dorado:
+        partition: gpu
+        threads: 8
+        mem_mb: 32000
+        runtime: 1440
+        slurm_extra: "--gres=gpu:2g.20gb:3"
+        params_model: "fast"

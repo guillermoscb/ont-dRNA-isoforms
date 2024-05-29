@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - bioconductor-bambu =3.4.0
+  - r-ggplot2 =3.5.1

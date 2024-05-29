@@ -21,4 +21,4 @@ rule isoform_bambu:
     conda:
         "../envs/bambu.yaml"
     script:
-        '../scripts/test_isoform_calling_bambu.R'
+        '../scripts/isoform_calling_bambu.R'

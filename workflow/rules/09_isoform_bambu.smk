@@ -3,8 +3,8 @@ rule isoform_bambu:
         mapped_reads="results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
         reference=config["paths"]["references"]["ref1"],
         annotations=config["paths"]["references"]["ref2"],
-        SummExperiment_files="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/",
     output:
+        SummExperiment_files="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/",
         counts_gene="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/counts_gene.txt",
         counts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/counts_transcript.txt",
         CPM_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/CPM_transcript.txt",
@@ -12,7 +12,7 @@ rule isoform_bambu:
         fullLengthCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/fullLengthCounts_transcript.txt",
         uniqueCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/uniqueCounts_transcript.txt",
         se_novel_transcripts="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/novel_transcripts_filt.gtf",
-        se_novel_flen="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/novel_transcripts_filt.gtf",
+        se_novel_flen="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/full-length_transcripts_filt.gtf",
     params:
         # Novel Discovery Rate
         NDR=0.1,

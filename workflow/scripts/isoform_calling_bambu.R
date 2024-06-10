@@ -1,7 +1,6 @@
 # Load libraries
-library(devtools)
 library(bambu)
-library(ggplot2)
+
 
 
 # Initialize input files
@@ -12,37 +11,33 @@ reference.fa <- snakemake@input[["reference"]]
 annotations.gtf <- snakemake@input[["annotations"]]
 
 
+# Check if input files exist
+if (!file.exists(sample.bam)) stop("Mapped reads file not found: ", sample.bam)
+if (!file.exists(reference.fa)) stop("Reference file not found: ", reference.fa)
+if (!file.exists(annotations.gtf)) stop("Annotations file not found: ", annotations.gtf)
+
+
 # Preprare annotations files for bambu
 bambuAnnotations <- prepareAnnotations(annotations.gtf)
 
 
 # Create the SummarizedExperiment objet
-se <- bambu(reads = sample.bam, annotations = bambuAnnotations, genome = reference.fa)
+se <- bambu(reads = sample.bam, annotations = bambuAnnotations, genome = reference.fa, NDR = snakemake@params[["NDR"]])
+
 
 # Filter by novel transcripts
-se.novel = se[mcols(se)$newTxClass != "annotation",]
+se.novel.transcripts <- se[mcols(se)$novelTranscript,]
+se.novel.transcripts.gtf <- rowRanges(se.novel.transcripts)
+
+
+# Filter by full-length trancripts
+se.novel.flen <- se[assays(se)$fullLengthCounts >= 1,]
+se.novel.flen.gtf <- rowRanges(se.novel.flen)
 
 
 # Save the Project
-saveRDS(bambuAnnotations, snakemake@output[["SummExperiment_rds"]])
+writeBambuOutput(se, path = snakemake@input[["SummExperiment_files"]])
 
-writeBambuOutput(se, path = snakemake@output[["SummExperiment_files"]])
+writeToGTF(se.novel.transcripts.gtf, snakemake@output[["se_novel_transcripts"]])
 
-writeBambuOutput(se.novel, path = snakemake@output[["novel_transcripts"]])
-
-
-# Plotting 
-annotation.plot <- plotBambu(se, type = "annotation")
-ggsave(filename = file.path(snakemake@output[["SummExperiment_plots"]], "annotation.png"), plot = annotation.plot, width = 10, height = 8, dpi = 300)
-
-
-heatmap.plot <- plotBambu(se, type = "heatmap")
-ggsave(filename = file.path(snakemake@output[["SummExperiment_plots"]], "heatmap.png"), plot = heatmap.plot, width = 10, height = 8, dpi = 300)
-
-
-pca.plot <- plotBambu(se, type = "pca")
-ggsave(filename = file.path(snakemake@output[["SummExperiment_plots"]], "pca.png"), plot = pca.plot, width = 10, height = 8, dpi = 300)
-
-
-
-
+writeToGTF(se.novel.flen.gtf, snakemake@output[["se_novel_flen"]])

@@ -4,4 +4,4 @@ channels:
 
 dependencies:
   - bioconductor-bambu =3.4.0
-  - r-ggplot2 =3.5.1
+  - r-biocmanager =1.30.23

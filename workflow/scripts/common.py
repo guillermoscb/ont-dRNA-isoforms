@@ -18,7 +18,6 @@ def getcmp(wc):
         raise ValueError(f"Operator {wc.cmp} not recognised")
 
 
-
 def input_main(wc):
     o = []
     for sid in config["samples"]:
@@ -27,4 +26,5 @@ def input_main(wc):
                 o.append(f"results/pycoqc/{sid}/{bc}.html")
                 o.append(f"results/primary/{sid}/dorado-{filt}.cov")
                 o.append(f"results/mosdepth/{sid}/dorado-{filt}.mosdepth.global.dist.txt")
+                o.append(f"results/isoform_bambu/{sid}/summarized_experiment-{bc}-{filt}/novel_transcripts_filt.gtf")
     return o

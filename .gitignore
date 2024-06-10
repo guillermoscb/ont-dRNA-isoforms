@@ -32,3 +32,4 @@ results/
 config/config.yaml
 logs/
 docs/index.html
+slurm*

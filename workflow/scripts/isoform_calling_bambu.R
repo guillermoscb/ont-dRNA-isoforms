@@ -36,7 +36,7 @@ se.novel.flen.gtf <- rowRanges(se.novel.flen)
 
 
 # Save the Project
-writeBambuOutput(se, path = snakemake@output[["SummExperiment_files"]])
+writeBambuOutput(se, path = snakemake@params[["SummExperiment_output"]])
 
 writeToGTF(se.novel.transcripts.gtf, snakemake@output[["se_novel_transcripts"]])
 

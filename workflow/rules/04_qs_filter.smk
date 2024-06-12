@@ -1,12 +1,12 @@
 rule qs_filter:
     input:
-        "results/basecall_dorado/{sampleid}/{basecaller}.bam",
+        "{output_path}/results/basecall_dorado/{sampleid}/{basecaller}.bam",
     output:
-        "results/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
+        "{output_path}/results/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
     log:
-        "logs/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
+        "{output_path}/logs/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
     benchmark:
-        "logs/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
+        "{output_path}/logs/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
     params:
         cmp=getcmp,
         qscore=lambda wc: wc.qscore.lstrip("0"),

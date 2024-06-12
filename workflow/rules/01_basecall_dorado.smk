@@ -2,11 +2,11 @@ rule basecall_dorado:
     input:
         lambda wc: config["samples"][wc.sampleid]["pod5"],
     output:
-        "results/basecall_dorado/{sampleid}/dorado.bam",
+        "{output_path}/results/basecall_dorado/{sampleid}/dorado.bam",
     log:
-        "logs/basecall_dorado/{sampleid}/dorado.log",
+        "{output_path}/logs/basecall_dorado/{sampleid}/dorado.log",
     benchmark:
-        "logs/basecall_dorado/{sampleid}/dorado.bmk"
+        "{output_path}/logs/basecall_dorado/{sampleid}/dorado.bmk"
     params:
         bin=config["basecallers"]["dorado"]["bin"],
         model=get_resource("basecall_dorado", "params_model"),

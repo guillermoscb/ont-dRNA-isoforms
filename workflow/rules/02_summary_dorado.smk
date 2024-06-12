@@ -1,12 +1,12 @@
 rule summary_dorado:
     input:
-        "results/basecall_dorado/{sampleid}/dorado.bam",
+        "{output_path}/results/basecall_dorado/{sampleid}/dorado.bam",
     output:
-        "results/summary_dorado/{sampleid}/dorado.txt",
+        "{output_path}/results/summary_dorado/{sampleid}/dorado.txt",
     log:
-        "logs/summary_dorado/{sampleid}/dorado.log",
+        "{output_path}/logs/summary_dorado/{sampleid}/dorado.log",
     benchmark:
-        "logs/summary_dorado/{sampleid}/dorado.bmk"
+        "{output_path}/logs/summary_dorado/{sampleid}/dorado.bmk"
     params:
         bin=config["basecallers"]["dorado"]["bin"],
     threads: get_resource("summary_dorado", "threads")

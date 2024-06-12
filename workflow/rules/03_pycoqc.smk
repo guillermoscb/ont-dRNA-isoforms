@@ -1,12 +1,12 @@
 rule pycoqc:
     input:
-        "results/summary_dorado/{sampleid}/dorado.txt",
+        "{output_path}/results/summary_dorado/{sampleid}/dorado.txt",
     output:
-        "results/pycoqc/{sampleid}/{basecaller}.html",
+        "{output_path}/results/pycoqc/{sampleid}/{basecaller}.html",
     log:
-        "logs/pycoqc/{sampleid}/{basecaller}.log",
+        "{output_path}/logs/pycoqc/{sampleid}/{basecaller}.log",
     benchmark:
-        "logs/pycoqc/{sampleid}/{basecaller}.bmk"
+        "{output_path}/logs/pycoqc/{sampleid}/{basecaller}.bmk"
     threads: get_resource("pycoqc", "threads")
     conda:
         "../envs/pycoqc.yaml"

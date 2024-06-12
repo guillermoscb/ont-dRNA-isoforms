@@ -1,12 +1,12 @@
 rule seq_coverage:
     input:
-        "results/primary/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
+        "{output_path}/results/primary/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
     output:
-        "results/primary/{sampleid}/{basecaller}-{cmp}-{qscore}.cov",
+        "{output_path}/results/primary/{sampleid}/{basecaller}-{cmp}-{qscore}.cov",
     log:
-        "logs/coverage/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
+        "{output_path}/logs/coverage/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
     benchmark:
-        "logs/coverage/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
+        "{output_path}/logs/coverage/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
     resources:
         mem_mb=get_resource("coverage", "mem_mb"),
         runtime=get_resource("coverage", "runtime"),

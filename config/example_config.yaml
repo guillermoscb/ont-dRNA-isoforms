@@ -13,6 +13,8 @@ samples:
         pod5: "/PATH/TO/file.pod5"
 
 
+output_path: "/PATH/PREFIX/TO/OUTPUT/DIR"
+
 basecallers:
   dorado:
     bin: "/PATH/TO/bin/dorado"
@@ -31,5 +33,5 @@ resources:
         threads: 8
         mem_mb: 32000
         runtime: 1440
-        slurm_extra: "--gres=gpu:2g.20gb:3"
+        slurm_extra: "--gres=--gres=gpu:A100:1"
         params_model: "fast"

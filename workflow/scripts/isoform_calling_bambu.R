@@ -25,19 +25,6 @@ bambuAnnotations <- prepareAnnotations(annotations.gtf)
 se <- bambu(reads = sample.bam, annotations = bambuAnnotations, genome = reference.fa, NDR = snakemake@params[["NDR"]])
 
 
-# Filter by novel transcripts
-se.novel.transcripts <- se[mcols(se)$novelTranscript,]
-se.novel.transcripts.gtf <- rowRanges(se.novel.transcripts)
-
-
-# Filter by full-length trancripts
-se.novel.flen <- se[assays(se)$fullLengthCounts >= 1,]
-se.novel.flen.gtf <- rowRanges(se.novel.flen)
-
-
 # Save the Project
 writeBambuOutput(se, path = snakemake@params[["SummExperiment_output"]])
 
-writeToGTF(se.novel.transcripts.gtf, snakemake@output[["se_novel_transcripts"]])
-
-writeToGTF(se.novel.flen.gtf, snakemake@output[["se_novel_flen"]])

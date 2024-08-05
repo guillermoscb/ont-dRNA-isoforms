@@ -20,13 +20,12 @@ def getcmp(wc):
 
 def input_main(wc):
     o = []
-    prefix_path = config["output_path"]
     for sid in config["samples"]:
         for bc in config["basecallers"]:
             for filt in config["filters"]:
-                o.append(f"{prefix_path}/results/pycoqc/{sid}/{bc}.html")
-                o.append(f"{prefix_path}/results/primary/{sid}/dorado-{filt}.cov")
-                o.append(f"{prefix_path}/results/mosdepth/{sid}/dorado-{filt}.mosdepth.global.dist.txt")
-                o.append(f"{prefix_path}/results/isoform_bambu/{sid}/summarized_experiment-{bc}-{filt}/fullLengthCounts_transcript.txt")
+                o.append(f"results/pycoqc/{sid}/{bc}.html")
+                o.append(f"results/primary/{sid}/dorado-{filt}.cov")
+                o.append(f"results/mosdepth/{sid}/dorado-{filt}.mosdepth.global.dist.txt")
+                o.append(f"results/isoform_bambu/{sid}/summarized_experiment-{bc}-{filt}/fullLengthCounts_transcript.txt")
     return o
 

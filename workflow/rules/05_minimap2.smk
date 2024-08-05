@@ -1,15 +1,15 @@
 rule minimap2:
     input:
-        reads="{output_path}/results/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
+        reads="results/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
         reference=config["paths"]["references"]["ref1"],
     output:
-        "{output_path}/results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
+        "results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
     params:
         preset = '-a -x splice -uf -k15'
     log:
-        "{output_path}/logs/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
+        "logs/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
     benchmark:
-        "{output_path}/logs/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
+        "logs/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bmk"
     threads: get_resource("minimap2", "threads")
     resources:
         mem_mb=get_resource("minimap2", "mem_mb"),

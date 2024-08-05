@@ -12,7 +12,7 @@ rule isoform_bambu:
         uniqueCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/uniqueCounts_transcript.txt",
     params:
         # Novel Discovery Rate
-        NDR=1,
+        NDR=config["bambu"]["NDR"],
         SummExperiment_output="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/",
     log:
         "logs/isoform_bambu/{sampleid}/{basecaller}-{cmp}-{qscore}.log",

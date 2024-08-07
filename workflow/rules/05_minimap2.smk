@@ -1,7 +1,7 @@
 rule minimap2:
     input:
         reads="results/qsfilter/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
-        reference=config["paths"]["references"]["ref1"],
+        reference=config["paths"]["references"]["genome"],
     output:
         "results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
     params:

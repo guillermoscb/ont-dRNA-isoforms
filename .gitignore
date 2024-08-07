@@ -33,3 +33,6 @@ config/config.yaml
 logs/
 docs/index.html
 slurm*
+
+results
+logs

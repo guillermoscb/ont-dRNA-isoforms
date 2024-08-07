@@ -1,8 +1,8 @@
 rule isoform_bambu:
     input:
         mapped_reads="results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
-        reference=config["paths"]["references"]["ref1"],
-        annotations=config["paths"]["references"]["ref2"],
+        reference=config["paths"]["references"]["genome"],
+        annotations=config["paths"]["references"]["transcriptome"],
     output:
         counts_gene="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/counts_gene.txt",
         counts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/counts_transcript.txt",
@@ -12,7 +12,7 @@ rule isoform_bambu:
         uniqueCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/uniqueCounts_transcript.txt",
     params:
         # Novel Discovery Rate
-        NDR=1,
+        NDR=config["bambu"]["NDR"],
         SummExperiment_output="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/",
     log:
         "logs/isoform_bambu/{sampleid}/{basecaller}-{cmp}-{qscore}.log",

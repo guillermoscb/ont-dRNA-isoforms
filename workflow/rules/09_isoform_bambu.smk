@@ -10,6 +10,7 @@ rule isoform_bambu:
         extended_annotations="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/extended_annotations.gtf",
         fullLengthCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/fullLengthCounts_transcript.txt",
         uniqueCounts_transcript="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/uniqueCounts_transcript.txt",
+        ndr_table="results/isoform_bambu/{sampleid}/summarized_experiment-{basecaller}-{cmp}-{qscore}/transcript_NDR.txt"
     params:
         # Novel Discovery Rate
         NDR=config["bambu"]["NDR"],

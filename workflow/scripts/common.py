@@ -26,6 +26,7 @@ def input_main(wc):
                 o.append(f"results/pycoqc/{sid}/{bc}.html")
                 o.append(f"results/primary/{sid}/dorado-{filt}.cov")
                 o.append(f"results/mosdepth/{sid}/dorado-{filt}.mosdepth.global.dist.txt")
-                o.append(f"results/isoform_bambu/{sid}/summarized_experiment-{bc}-{filt}/fullLengthCounts_transcript.txt")
+#                o.append(f"results/isoform_bambu/{sid}/summarized_experiment-{bc}-{filt}/fullLengthCounts_transcript.txt")
+    o.append(f"results/isoform_bambu/summarized_experiment/fullLengthCounts_transcript.txt")
     return o
 

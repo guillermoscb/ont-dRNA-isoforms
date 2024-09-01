@@ -4,7 +4,7 @@ library(bambu)
 
 
 # Initialize input files
-sample.bam <- snakemake@input[["mapped_reads"]]
+sample.bam <- c(snakemake@input[["mapped_reads"]])
 
 reference.fa <- snakemake@input[["reference"]]
 

@@ -5,7 +5,7 @@ rule minimap2:
     output:
         "results/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.bam",
     params:
-        preset = '-a -x splice -uf -k15'
+        preset = '-a -x splice -uf -k14'
     log:
         "logs/minimap2/{sampleid}/{basecaller}-{cmp}-{qscore}.log",
     benchmark:

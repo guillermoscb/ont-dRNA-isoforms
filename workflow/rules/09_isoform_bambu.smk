@@ -8,7 +8,7 @@ rule isoform_bambu:
                            basecaller=config["basecallers"],
                            cmp_qscore=config["filters"]),
         reference=config["paths"]["references"]["genome"],
-        annotations=config["paths"]["references"]["transcriptome"],
+        annotations=config["paths"]["references"]["annotation"],
     output:
         counts_gene="results/isoform_bambu/summarized_experiment/counts_gene.txt",
         counts_transcript="results/isoform_bambu/summarized_experiment/counts_transcript.txt",

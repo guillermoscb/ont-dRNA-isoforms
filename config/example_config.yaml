@@ -6,7 +6,7 @@ paths:
 
 
 filters:
-    - ge-06
+    - ge-08
 
 samples:
     sample1:
